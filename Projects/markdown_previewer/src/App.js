@@ -5,11 +5,58 @@ import MarkdownEditor from "./components/MarkdownEditor";
 import MarkdownPreview from './components/MarkdownPreview';
 const ReactMarkdown = require('react-markdown');
 
+const exampleSrc = `
+  # Live demo
+
+Changes are automatically rendered as you type.
+
+* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)
+* Renders actual, "native" React DOM elements
+* Allows you to escape or skip HTML (try toggling the checkboxes above)
+* If you escape or skip the HTML, no \`dangerouslySetInnerHTML\` is used! Yay!
+
+## HTML block below
+
+<blockquote>
+  This blockquote will change based on the HTML settings above.
+</blockquote>
+
+## How about some code?
+\`\`\`js
+var React = require('react');
+var Markdown = require('react-markdown');
+
+React.render(
+  <Markdown source="# Your markdown here" />,
+  document.getElementById('content')
+);
+\`\`\`
+
+Pretty neat, eh?
+
+## Tables?
+
+| Feature | Support |
+| ------ | ----------- |
+| tables | ✔ |
+| alignment | ✔ |
+| wewt | ✔ |
+
+## More info?
+
+Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
+
+---------------
+
+A component by [VaffelNinja](http://vaffel.ninja) / Espen Hovlandsdal
+
+`
+
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {textInput: ''};
+    this.state = {textInput: exampleSrc};
 
     this.handleChange = this.handleChange.bind(this);
     this.displayMarkdownText = this.displayMarkdownText.bind(this);
@@ -26,7 +73,10 @@ class App extends Component {
   }
   render() {
     return <div className="App">
-        <MarkdownEditor onChange={this.handleChange}/>
+        <MarkdownEditor
+          onChange={this.handleChange}
+          placeholder={exampleSrc}
+        />
         <ReactMarkdown
           className="result"
           source={this.state.textInput}
