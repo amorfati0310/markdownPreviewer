@@ -3,9 +3,9 @@ import {markdown} from 'markdown';
 import './App.css';
 import MarkdownEditor from "./components/MarkdownEditor";
 import MarkdownPreview from './components/MarkdownPreview';
-const ReactMarkdown = require('react-markdown');
+import ReactMarkdown from 'react-markdown';
 
-const exampleSrc = `
+const exampleTxt = `
   # Live demo
 
 Changes are automatically rendered as you type.
@@ -56,7 +56,7 @@ A component by [VaffelNinja](http://vaffel.ninja) / Espen Hovlandsdal
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {textInput: exampleSrc};
+    this.state = {textInput: exampleTxt};
 
     this.handleChange = this.handleChange.bind(this);
     this.displayMarkdownText = this.displayMarkdownText.bind(this);
@@ -65,17 +65,12 @@ class App extends Component {
     this.setState({
       textInput: event.target.value
     })
-    this.displayMarkdownText(this.state.textInput)
-  }
-  displayMarkdownText(text){
-    console.log(markdown.toHTML(text))
-    return markdown.toHTML(text);
   }
   render() {
     return <div className="App">
         <MarkdownEditor
           onChange={this.handleChange}
-          placeholder={exampleSrc}
+          placeholder={exampleTxt}
         />
         <ReactMarkdown
           className="result"

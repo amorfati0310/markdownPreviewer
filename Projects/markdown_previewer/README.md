@@ -13,7 +13,7 @@
 boilerPlate 만들 필요성이
 RCC, RSC,
 
-[참고_사이트](http://markdownlivepreview.com/)
+[참고_사이트](https://github.com/rexxars/react-markdown)
 
 
 ### 우여곡절
@@ -33,3 +33,12 @@ RCC, RSC,
 
 ###  추가로 진행할 것
 라이브러리 보고 코드들 파악해보기 지금은 그냥 붙여놓은 정도
+
+### 라이브러리 공부
+
+demo
+src
+test
+umd
+
+
